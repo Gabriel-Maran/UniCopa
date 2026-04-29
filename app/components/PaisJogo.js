@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
-import FLAGS from "../data/countryImages.js";
+import { getImagePaisBySigla } from "../controller/ImageController.js";
 
 export default function PaisJogo({ sigla }) {
   return (
     <View style={styles.paisJogo}>
-      <Image source={FLAGS[sigla]} style={styles.imageUniCopa} />
+      <Image source={getImagePaisBySigla(sigla)} style={styles.imageUniCopa} />
       <Text style={styles.textPais}>{sigla}</Text>
     </View>
   );

@@ -1,33 +1,25 @@
 import { StatusBar } from "expo-status-bar";
 import { useEffect, useState } from "react";
 import { Image, StyleSheet, Text, View, FlatList } from "react-native";
-import Jogo from "./components/Jogo";
-import JogosDia from "./components/JogosDia.js";
+import Jogo from "../components/Jogo";
+import JogosDia from "../components/JogosDia";
+import { getDadosCopa, getJogosDiarios } from "../controller/PaisController.js";
 
 export default function App() {
   const [dadosCopa, setDadosCopa] = useState([]);
   const [jogosDiarios, setJogosDiarios] = useState([]);
-
+  const [nomeImagePais, setNomeImagePais] = useState([]);
   useEffect(() => {
-    const dados = require("./data/copa_mundo_2026_jogos_brasilia_com_estadios.json");
+    const dados = getDadosCopa();
     setDadosCopa(dados);
-    //Tratar dados por dia...
-    let mapDias = {};
-    let jogos = dados.jogos;
-    jogos.forEach((jogo) => {
-      if (mapDias[jogo.data_brasilia]) {
-        mapDias[jogo.data_brasilia].push(jogo);
-      } else {
-        mapDias[jogo.data_brasilia] = [jogo];
-      }
-    });
-    setJogosDiarios(mapDias);
+    const jogosPorDia = getJogosDiarios();
+    setJogosDiarios(jogosPorDia);
   }, []);
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <Image
-          source={require("./assets/unicopa.png")}
+          source={require("../assets/unicopa.png")}
           style={styles.imageUniCopa}
         />
       </View>

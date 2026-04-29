@@ -1,14 +1,8 @@
 import { useEffect, useState } from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
-import FLAGS from "../data/countryImages.js";
 import PaisJogo from "./PaisJogo.js";
 
 export default function Jogo({ item }) {
-  const [nomeImagePais, setNomeImagePais] = useState([]);
-  useEffect(() => {
-    const dados = require("../data/copa_mundo_2026_jogos_brasilia_com_estadios.json");
-    setNomeImagePais(dados);
-  }, []);
   return (
     <View style={styles.container}>
       <View style={styles.viewTextTop}>
