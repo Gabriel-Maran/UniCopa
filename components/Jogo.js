@@ -3,7 +3,6 @@ import { Image, StyleSheet, Text, View } from "react-native";
 import FLAGS from "../data/countryImages.js";
 import PaisJogo from "./PaisJogo.js";
 
-//<Image source={require("./assets/abkhazia.png")}/>
 export default function Jogo({ item }) {
   const [nomeImagePais, setNomeImagePais] = useState([]);
   useEffect(() => {
@@ -25,6 +24,16 @@ export default function Jogo({ item }) {
           <Text style={styles.textJogoCenter}>VS</Text>
         </View>
         <PaisJogo sigla={item.sigla_fora} />
+      </View>
+      <View style={styles.detalhesJogo}>
+        <Text style={[styles.textInfoJogo, { width: "35%" }]}>
+          {item.estadio}
+        </Text>
+        <Text
+          style={[styles.textInfoJogo, { textAlign: "right", width: "65%" }]}
+        >
+          {item.cidade} • {item.pais}
+        </Text>
       </View>
     </View>
   );
@@ -52,5 +61,15 @@ const styles = StyleSheet.create({
   textJogoCenter: {
     color: "#fff",
     textAlign: "center",
+  },
+  detalhesJogo: {
+    flexDirection: "row",
+    width: "90%",
+  },
+  textInfoJogo: {
+    color: "#92A9B9",
+    fontSize: 10,
+    fontWeight: "700",
+    flex: 1,
   },
 });

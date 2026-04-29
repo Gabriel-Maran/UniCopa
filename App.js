@@ -2,8 +2,8 @@ import { StatusBar } from "expo-status-bar";
 import { useEffect, useState } from "react";
 import { Image, StyleSheet, Text, View, FlatList } from "react-native";
 import Jogo from "./components/Jogo";
+import JogoDia from "./components/JogosDia.js";
 
-//<Image source={require("./assets/abkhazia.png")}/>
 export default function App() {
   const [dadosCopa, setDadosCopa] = useState([]);
   const [jogosDiarios, setJogosDiarios] = useState([]);
@@ -14,6 +14,14 @@ export default function App() {
     //Tratar dados por dia...
     let mapDias = {};
     let jogos = dados.jogos;
+    jogos.forEach((jogo) => {
+      if (mapDias[jogo.data_brasilia]) {
+        mapDias[jogo.data_brasilia].push(jogo);
+      } else {
+        mapDias[jogo.data_brasilia] = [jogo];
+      }
+    });
+    setJogosDiarios(mapDias);
   }, []);
   return (
     <View style={styles.container}>
@@ -34,11 +42,11 @@ export default function App() {
           CALENDÁRIO
         </Text>
         <FlatList
-          data={dadosCopa.jogos}
+          data={Object.values(jogosDiarios)}
           renderItem={({ item }) => {
-            return <Jogo item={item} />;
+            return <JogoDia jogos={item} />;
           }}
-          keyExtractor={(item) => item.id}
+          keyExtractor={(item) => item[0].data_brasilia}
           style={styles.listaJogos}
         />
       </View>
@@ -63,10 +71,10 @@ const styles = StyleSheet.create({
   },
   main: {
     marginTop: 20,
-    width: "90%",
+    width: "95%",
     alignItems: "center",
   },
   listaJogos: {
-    width: "90%",
+    width: "95%",
   },
 });
