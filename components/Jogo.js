@@ -11,7 +11,7 @@ export default function Jogo({ item }) {
   }, []);
   return (
     <View style={styles.container}>
-      <View style={{ flexDirection: "row", width: "100%" }}>
+      <View style={styles.viewTextTop}>
         <Text style={[styles.textTop, { marginRight: 15 }]}>
           GRUPO {item.grupo}
         </Text>
@@ -29,6 +29,7 @@ export default function Jogo({ item }) {
         <Text style={[styles.textInfoJogo, { width: "35%" }]}>
           {item.estadio}
         </Text>
+
         <Text
           style={[styles.textInfoJogo, { textAlign: "right", width: "65%" }]}
         >
@@ -43,7 +44,8 @@ const styles = StyleSheet.create({
   container: {
     width: "100%",
     marginVertical: 5,
-    padding: 15,
+    borderTopWidth: 1,
+    borderTopColor: "#2e4c6e",
   },
   textTop: {
     color: "#92A9B9",
@@ -53,7 +55,7 @@ const styles = StyleSheet.create({
   viewPais: {
     flexDirection: "row",
     width: "100%",
-    padding: 10,
+    padding: 11,
   },
   textHorarioJogo: {
     flex: 1,
@@ -64,12 +66,21 @@ const styles = StyleSheet.create({
   },
   detalhesJogo: {
     flexDirection: "row",
-    width: "90%",
+    width: "100%",
   },
   textInfoJogo: {
+    borderTopWidth: 1,
+    borderTopColor: "#2e4c6e",
+    paddingTop: 5,
+    paddingHorizontal: 5,
     color: "#92A9B9",
     fontSize: 10,
     fontWeight: "700",
     flex: 1,
+  },
+  viewTextTop: {
+    flexDirection: "row",
+    width: "100%",
+    padding: 8,
   },
 });

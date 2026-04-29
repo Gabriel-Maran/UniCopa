@@ -20,6 +20,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "row",
     alignSelf: "center",
+    padding: 5,
   },
   textPais: {
     color: "#fff",

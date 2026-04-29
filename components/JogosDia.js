@@ -18,11 +18,21 @@ export default function JogosPorDia({ jogos }) {
 const styles = StyleSheet.create({
   container: {
     width: "100%",
+    borderWidth: 1,
+    backgroundColor: "#072341",
+    borderColor: "#2e4c6e",
+    borderRadius: 10,
+    padding: 10,
+    marginBottom: 20,
   },
   textDia: {
     color: "#F0C62D",
     fontSize: 18,
     fontWeight: "700",
-    marginBottom: 10,
+    width: "100%",
+    alignSelf: "center",
+    paddingBottom: 15,
+    paddingTop: 10,
+    paddingHorizontal: 5,
   },
 });

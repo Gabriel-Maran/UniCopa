@@ -2,7 +2,7 @@ import { StatusBar } from "expo-status-bar";
 import { useEffect, useState } from "react";
 import { Image, StyleSheet, Text, View, FlatList } from "react-native";
 import Jogo from "./components/Jogo";
-import JogoDia from "./components/JogosDia.js";
+import JogosDia from "./components/JogosDia.js";
 
 export default function App() {
   const [dadosCopa, setDadosCopa] = useState([]);
@@ -32,19 +32,11 @@ export default function App() {
         />
       </View>
       <View style={styles.main}>
-        <Text
-          style={{
-            fontWeight: "700",
-            color: "#fff",
-            fontSize: 26,
-          }}
-        >
-          CALENDÁRIO
-        </Text>
+        <Text style={styles.textCalendario}>CALENDÁRIO</Text>
         <FlatList
           data={Object.values(jogosDiarios)}
           renderItem={({ item }) => {
-            return <JogoDia jogos={item} />;
+            return <JogosDia jogos={item} />;
           }}
           keyExtractor={(item) => item[0].data_brasilia}
           style={styles.listaJogos}
@@ -71,10 +63,17 @@ const styles = StyleSheet.create({
   },
   main: {
     marginTop: 20,
-    width: "95%",
+    width: "100%",
+    paddingHorizontal: 15,
     alignItems: "center",
   },
   listaJogos: {
-    width: "95%",
+    width: "97%",
+    marginTop: 20,
+  },
+  textCalendario: {
+    fontWeight: "700",
+    color: "#fff",
+    fontSize: 26,
   },
 });
