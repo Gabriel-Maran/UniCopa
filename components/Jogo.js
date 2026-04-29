@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
+import FLAGS from "../data/countryImages.js";
+import PaisJogo from "./PaisJogo.js";
 
 //<Image source={require("./assets/abkhazia.png")}/>
 export default function Jogo({ item }) {
@@ -17,24 +19,12 @@ export default function Jogo({ item }) {
         <Text style={styles.textTop}>{item.confronto}</Text>
       </View>
       <View style={styles.viewPais}>
-        <View style={styles.paisJogo}>
-          <Image
-            source={require("../assets/mexico.png")}
-            style={styles.imageUniCopa}
-          />
-          <Text style={styles.textPais}>{item.sigla_casa}</Text>
-        </View>
+        <PaisJogo sigla={item.sigla_casa} />
         <View style={styles.textHorarioJogo}>
           <Text style={styles.textJogoCenter}>{item.hora_et}</Text>
           <Text style={styles.textJogoCenter}>VS</Text>
         </View>
-        <View style={styles.paisJogo}>
-          <Image
-            source={require("../assets/mexico.png")}
-            style={styles.imageUniCopa}
-          />
-          <Text style={styles.textPais}>{item.sigla_fora}</Text>
-        </View>
+        <PaisJogo sigla={item.sigla_fora} />
       </View>
     </View>
   );
@@ -55,21 +45,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     width: "100%",
     padding: 10,
-  },
-  imageUniCopa: {
-    width: 35,
-    height: 35,
-  },
-  paisJogo: {
-    flex: 1,
-    flexDirection: "row",
-    alignSelf: "center",
-  },
-  textPais: {
-    color: "#fff",
-    textAlign: "center",
-    width: "70%",
-    alignSelf: "center",
   },
   textHorarioJogo: {
     flex: 1,
