@@ -14,8 +14,8 @@ export default function Jogo({ item }) {
       <View style={styles.viewPais}>
         <PaisJogo sigla={item.sigla_casa} />
         <View style={styles.textHorarioJogo}>
-          <Text style={styles.textJogoCenter}>{item.hora_et}</Text>
-          <Text style={styles.textJogoCenter}>VS</Text>
+          <Text style={styles.textJogoCenterHorario}>{item.hora_et}</Text>
+          <Text style={styles.textJogoCenterVS}>VS</Text>
         </View>
         <PaisJogo sigla={item.sigla_fora} />
       </View>
@@ -39,11 +39,11 @@ const styles = StyleSheet.create({
     width: "100%",
     marginVertical: 5,
     borderTopWidth: 1,
-    borderTopColor: "#2e4c6e",
+    borderTopColor: "#2c4664",
   },
   textTop: {
     color: "#92A9B9",
-    fontSize: 11,
+    fontSize: 10,
     fontWeight: "700",
   },
   viewPais: {
@@ -54,9 +54,16 @@ const styles = StyleSheet.create({
   textHorarioJogo: {
     flex: 1,
   },
-  textJogoCenter: {
+  textJogoCenterVS: {
+    color: "#aeb9c2",
+    textAlign: "center",
+    fontSize: 10,
+  },
+  textJogoCenterHorario: {
     color: "#fff",
     textAlign: "center",
+    fontWeight: "bold",
+    fontSize: 14,
   },
   detalhesJogo: {
     flexDirection: "row",
